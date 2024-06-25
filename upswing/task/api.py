@@ -18,12 +18,7 @@ def get_status_count():
     if not start_time or not end_time:
         return jsonify({"error": "Please provide both start_time and end_time in ISO format"}), 400
 
-    try:
-        start_time = datetime.fromisoformat(start_time)
-        end_time = datetime.fromisoformat(end_time)
-        
-    except ValueError:
-        return jsonify({"error": "Invalid date format. Use ISO format"}), 400
+    print(f"ISO Start time: {start_time}, ISO End time: {end_time}")
 
     # Use MongoDB aggregate pipeline to count statuses within the time range
     pipeline = [
@@ -32,11 +27,8 @@ def get_status_count():
     ]
 
     result = list(collection.aggregate(pipeline))
+    return jsonify(result)
 
-    # Format the result to return as a JSON response
-    status_count = {str(item['_id']): item['count'] for item in result}
-
-    return jsonify(status_count)
 
 if __name__ == "__main__":
     app.run(debug=True)
