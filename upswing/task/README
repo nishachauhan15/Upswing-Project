@@ -1,0 +1,29 @@
+# MQTT-RabbitMQ-MongoDB Integration
+
+This project demonstrates a simple integration between MQTT, RabbitMQ, and MongoDB using Python. It consists of a message producer, a message consumer, and a Flask API to query data from MongoDB.
+
+## Overview
+
+The project consists of the following components:
+
+1. **Producer**: Publishes MQTT messages to RabbitMQ every second with a "status" field containing a random value between 0 and 6.
+2. **Consumer**: Consumes MQTT messages from RabbitMQ, processes them, and stores them in MongoDB.
+3. **Flask API**: Provides an endpoint to query the count of each status within a specified time range.
+
+## Components
+
+1. **Producer**: `producer.py`
+2. **Consumer**: `consumer.py`
+3. **Flask API**: `api.py`
+
+## Installation
+
+### Prerequisites
+
+- Python 3.8+
+- RabbitMQ
+- MongoDB
+- `pika`, `pymongo`, `flask`
+
+
+
