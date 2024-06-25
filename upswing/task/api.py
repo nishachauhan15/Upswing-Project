@@ -16,9 +16,9 @@ def get_status_count():
     end_time = request.args.get('end_time')
 
     if not start_time or not end_time:
-        return jsonify({"error": "Please provide both start_time and end_time in ISO format"}), 400
+        return jsonify({"error": "Please provide both start_time and end_time"}), 400
 
-    print(f"ISO Start time: {start_time}, ISO End time: {end_time}")
+    print(f"Start time: {start_time}, End time: {end_time}")
 
     # Use MongoDB aggregate pipeline to count statuses within the time range
     pipeline = [
